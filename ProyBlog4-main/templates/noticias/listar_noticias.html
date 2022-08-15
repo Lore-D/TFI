@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contenido %}
+
+	<h1>PAGINA DE NOTICIAS</h1>
+    <br>
+    <div class="caja_noticia">
+    {% for n in notis %}
+        
+        <h4>{{ n.titulo }}</h4>
+        <br>
+        <p>CATEGORIA: {{ n.categoria }}</p>
+        {% if n.autor %}
+            <p>AUTOR: {{ n.autor }}</P>
+        {% endif %}
+        <p>PUBLICADO: {{ n.creado }}</p>
+        <p>CUERPO: {{ n.cuerpo }}</p>
+        {% if n.imagen %}
+            <img src="{{ n.imagen.url }}" class="img_ancho">
+        {% else%}
+            <p>NO TIENE IMAGEN </p>
+        {% endif %}
+        
+    {% endfor %}
+    </div>
+{% endblock contenido %}
+
